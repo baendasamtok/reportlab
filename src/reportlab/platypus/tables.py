@@ -199,6 +199,11 @@ def spanFixDim(V0,V,spanCons,lim=None,FUZZ=rl_config._FUZZ):
     #assign required space to variable rows equally to existing calculated values
     M = {}
     if not lim: lim = len(V0)   #in longtables the row calcs may be truncated
+    
+    for idx, x in enumerate(V):
+        if x == None:
+            V[idx] = 0
+    
     for (x0,x1),v in spanCons.iteritems():
         if x0>=lim: continue
         x1 += 1
